@@ -1,6 +1,7 @@
 <?php
 
-$koneksi = mysqli_connect("localhost","root","","lawak-learning");
+$koneksi = 
+mysqli_connect("localhost","tikakusn_lawak","0hCyl]TmO}$}","tikakusn_lawak-learning");
 
 // Check connection
 if (mysqli_connect_errno()){

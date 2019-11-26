@@ -1,3 +1,20 @@
+<?php
+
+require_once('koneksi.php');
+include('assets/jawaban.php');
+if(isset($_POST['pre-test'])){
+    $data = [$_POST['jawaban1'], $_POST['jawaban2'], $_POST['jawaban3'], $_POST['jawaban3']];
+    // $jawaban = array_push($jawaban, $data);
+    // var_dump($data);
+    // var_dump($jawabanSoal);
+    $result = array_intersect($data, $jawabanSoal);
+    $final_score = count($result) / count($jawabanSoal) * 100;
+    $_SESSION['final_score'] = $final_score;
+    header('Location: results-score-pretest.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

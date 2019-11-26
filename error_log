@@ -1,0 +1,17 @@
+[26-Nov-2019 03:21:37 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/tikakusn/public_html/web_lawak-learning/koneksi.php on line 3
+[26-Nov-2019 03:26:09 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/tikakusn/public_html/web_lawak-learning/koneksi.php on line 11
+[26-Nov-2019 03:26:17 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/tikakusn/public_html/web_lawak-learning/koneksi.php on line 11
+[26-Nov-2019 03:26:20 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/tikakusn/public_html/web_lawak-learning/koneksi.php on line 11
+[26-Nov-2019 03:26:22 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/tikakusn/public_html/web_lawak-learning/login.php on line 18
+[26-Nov-2019 03:26:50 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/tikakusn/public_html/web_lawak-learning/koneksi.php on line 11
+[26-Nov-2019 03:26:58 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/tikakusn/public_html/web_lawak-learning/login.php on line 18
+[26-Nov-2019 03:28:36 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/tikakusn/public_html/web_lawak-learning/logout.php on line 3
+[26-Nov-2019 09:06:46 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/tikakusn/public_html/web_lawak-learning/koneksi.php on line 11
+[26-Nov-2019 09:07:09 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/tikakusn/public_html/web_lawak-learning/koneksi.php on line 11
+[26-Nov-2019 09:07:16 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/tikakusn/public_html/web_lawak-learning/login.php on line 18
+[26-Nov-2019 12:21:50 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/tikakusn/public_html/web_lawak-learning/login.php on line 18
+[26-Nov-2019 15:22:30 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/tikakusn/public_html/web_lawak-learning/login.php on line 18
+[26-Nov-2019 15:29:02 UTC] PHP Notice:  Undefined index: jawaban1 in /home/tikakusn/public_html/web_lawak-learning/pre-test.php on line 6
+[26-Nov-2019 15:29:02 UTC] PHP Notice:  Undefined index: jawaban2 in /home/tikakusn/public_html/web_lawak-learning/pre-test.php on line 6
+[26-Nov-2019 15:29:02 UTC] PHP Notice:  Undefined index: jawaban3 in /home/tikakusn/public_html/web_lawak-learning/pre-test.php on line 6
+[26-Nov-2019 15:29:02 UTC] PHP Notice:  Undefined index: jawaban3 in /home/tikakusn/public_html/web_lawak-learning/pre-test.php on line 6
