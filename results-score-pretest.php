@@ -53,8 +53,8 @@ require_once('koneksi.php');
 				</div>
 				<div class="skor">
 					<h1 style="text-align: center; margin-top: 80px; margin-bottom: 30px; font-size: 100px; font-weight: bold;"><?= $_SESSION['final_score']; ?> %</h1>
-					<center>
-						<a href="#" class="btn btn-primary">Home</a>
+          <center>
+						<a href="#" class="btn btn-primary">Next</a>
 					</center>
 				</div>
 			</div>

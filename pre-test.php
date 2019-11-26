@@ -51,7 +51,7 @@ if(isset($_POST['pre-test'])){
 			</div>
 		</div>
 		<center>
-			<strong style="text-transform: capitalize; padding-left: 3%;font-size: 35px; margin: 0; color:purple">Pre Test</strong>
+			<strong style="text-transform: capitalize; padding-left: 3%;font-size: 35px; margin: 0; color:purple">Selesaikan Pre Test Terlebih Dahulu Untuk Dapat Mengakses Konten Video</strong>
 		</center>
 	</div>
 
