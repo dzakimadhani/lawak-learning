@@ -1,3 +1,35 @@
+<?php
+
+session_start();
+
+require_once("koneksi.php");
+
+if(isset($_POST['register'])){
+
+    // filter data yang diinputkan
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    // enkripsi password
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+
+
+    // menyiapkan query
+    $sql = "INSERT INTO users (username, name, email, password) VALUES ('".$username."','".$name."','".$email."','".$password."')";
+
+    if ($koneksi->query($sql) === TRUE) {
+        echo "New record created successfully";
+        header("Location: login.php");
+    } else {
+        echo "Error: " . $sql . "<br>" . $koneksi->error;
+    }
+
+    // jika query simpan berhasil, maka user sudah terdaftar
+    // maka alihkan ke halaman login
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +55,8 @@
 		                    <figcaption class="figure-caption text-center">Belajar • Partisipasi • Terhubung</figcaption>
 		                </figure>
 		                <div class="form-signin">
+                      <form class="" action="register.php" method="post">
+
 		                	<div>
 		                		<h5 class="text-center">
 		                			<strong>Daftar</strong>
@@ -30,6 +64,9 @@
 		                	</div>
 		                    <div class="form-label-group">
 		                        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+		                    </div>
+                        <div class="form-label-group">
+		                        <input type="text" id="username" name="name" class="form-control" placeholder="Name" required autofocus>
 		                    </div>
 		                    <div class="form-label-group">
 		                        <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required>
@@ -39,13 +76,14 @@
 		                    </div>
 		                    <div class="row">
 		                    	<div class="col-6">
-		                    		<a class="kembali-login" href="#"><button class="btn btn-lg btn-block" type="submit">Kembali</button></a>
+		                    		<a class="kembali-login" href=""><button class="btn btn-lg btn-block" type="">Kembali</button></a>
 		                    	</div>
 		                    	<div class="col-6">
-		                    		<a class="masuk-login" href="#"><button class="btn btn-lg btn-block" type="submit">Daftar</button></a>
+		                    		<a class="masuk-login" href="#"><button class="btn btn-lg btn-block" name="register" type="submit">Daftar</button></a>
 		                    	</div>
 		                    </div>
-		                </div>
+                      </form>
+                    </div>
 		                <p class="text-center" style="padding-top: 10px;font-size: 12px">Dengan melanjutkan, anda menyetujui <strong>Ketentuan Layanan, Kebijakan Privasi</strong> IF-Learning</p>
 	                	<div class="text-center" style="font-size: 12px;">Sudah punya akun? <a style="color: purple" href="login.html"><strong>Login</strong></a></div>
 		                </div>
@@ -83,7 +121,7 @@
 	                    </div>
 	                </div>
 	                <p class="text-center" style=" padding-top: 10px;font-size: 12px">Dengan melanjutkan, anda menyetujui <strong>Ketentuan Layanan, Kebijakan Privasi</strong> IF-Learning</p>
-	                
+
 	                <div class="text-center" style="font-size: 12px;"><a href=""><strong>Lupa password</strong></a>?</div>
 	                <div class="text-center" style="font-size: 12px;">Belum punya akun? <a href="register.html"><strong>Daftar</strong></a></div>
 

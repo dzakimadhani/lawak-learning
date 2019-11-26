@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,36 +12,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div>
-		<nav class="navbar navbar-expand-lg navbar-light">
-			<div class="logo">
-				<a class="navbar-brand" href="index.html">
-		    		<img class="margin-logo" src="images/logo.png" alt="logo" width="200px">
-		  		</a>
-			</div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-	  		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-	  			<ul class="nav navbar-nav ml-auto">
-	  				<li class="nav-item">
-	  					<div class="dropdown">
-	  						<a href="#" class="btn btn-login dropdown-toggle" data-toggle="dropdown">Dzaki Madhani</a>
-	  						<div class="dropdown-menu">
-	  							<a class="dropdown-item" href="#">Logout</a>
-	  						</div>
-	  					</div>
-	  				</li>
-	  				<li class="nav-item">
-	  					<a href="#" class="btn  btn-login">Daftar</a>
-	  				</li>
-	  				<li class="nav-item">
-	  					<a href="#" class="btn btn-login">Masuk</a>
-	  				</li>
-	  			</ul>
-	  		</div>
-		</nav>
-	</div>
+	<?php include('template/navbar.php') ?>
 	<!--
 	<nav class="navbar navbar-expand-lg navbar-white bg-white sticky-top">
   		<a class="navbar-brand" href="index.html">
@@ -89,7 +61,7 @@
 		<h3><strong>Tentang LAWAK LEARNING</strong></h3>
 		<br>
 			<div class="row">
-				
+
 				<div class="col" style="padding-top: 10%">
 					<h2 class="isi-tentang">APLIKASI UNTUK ANDA YANG INGIN BELAJAR LEBIH JAUH TENTANG</h2>
 					<h2 class="isi-tentang">GO FOOD</h2>
@@ -103,7 +75,7 @@
 		</div>
 	</section>
 
-	
+
 	<footer>
 		<nav class="navbar navbar-white bg-white">
 			<div class="container-fluid">

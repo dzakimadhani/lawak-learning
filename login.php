@@ -1,3 +1,29 @@
+<?php
+
+require_once('koneksi.php');
+
+if(isset($_POST['login'])){
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+
+  // menyeleksi data admin dengan username dan password yang sesuai
+  $data = mysqli_query($koneksi,"select * from users where username='".$username."'");
+
+  // menghitung jumlah data yang ditemukan
+  $cek = mysqli_num_rows($data);
+  $data = mysqli_fetch_array($data);
+    if($cek > 0){
+        if(password_verify($password, $data["password"])){
+           // buat Session
+           session_start();
+           $_SESSION["user"] = $data;
+           // login sukses, alihkan ke halaman timeline
+           header("Location: index.php");
+       }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +49,8 @@
 		                    <figcaption class="figure-caption text-center">Belajar • Partisipasi • Terhubung</figcaption>
 		                </figure>
 		                <div class="form-signin">
+                      <form class="" action="login.php" method="post">
+
 		                	<div>
 		                		<h5 class="text-center">
 		                			<strong>Masuk</strong>
@@ -36,15 +64,16 @@
 		                    </div>
 		                    <div class="row">
 		                    	<div class="col-6">
-		                    		<a class="kembali-login" href="#"><button class="btn btn-lg btn-block" type="submit">Kembali</button></a>
+		                    		<a class="kembali-login" href="#"><button class="btn btn-lg btn-block" type="button">Kembali</button></a>
 		                    	</div>
 		                    	<div class="col-6">
-		                    		<a class="masuk-login" href="#"><button class="btn btn-lg btn-block" type="submit">Masuk</button></a>
+		                    		<a class="masuk-login" href="#"><button class="btn btn-lg btn-block" name="login" type="submit">Masuk</button></a>
 		                    	</div>
 		                    </div>
-		                </div>
+                      </form>
+                    </div>
 		                <p class="text-center" style=" padding-top: 10px;font-size: 12px">Dengan melanjutkan, anda menyetujui <strong>Ketentuan Layanan, Kebijakan Privasi</strong> IF-Learning</p>
-		                
+
 		                <div class="text-center" style="font-size: 12px;"><a href=""><strong>Lupa password</strong></a>?</div>
 		                <div class="text-center" style="font-size: 12px;">Belum punya akun? <a href="register.html"><strong>Daftar</strong></a></div>
 
@@ -83,7 +112,7 @@
 	                    </div>
 	                </div>
 	                <p class="text-center" style=" padding-top: 10px;font-size: 12px">Dengan melanjutkan, anda menyetujui <strong>Ketentuan Layanan, Kebijakan Privasi</strong> IF-Learning</p>
-	                
+
 	                <div class="text-center" style="font-size: 12px;"><a href=""><strong>Lupa password</strong></a>?</div>
 	                <div class="text-center" style="font-size: 12px;">Belum punya akun? <a href="register.html"><strong>Daftar</strong></a></div>
 
