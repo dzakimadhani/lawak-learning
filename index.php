@@ -37,7 +37,7 @@
 				<div class="container body-jumbotron">
 					<h1 class="intro-jumbotron" ><strong>Belajar lebih banyak,</strong></h1>
 					<h1 class="intro-jumbotron" ><strong>mengenai GO FOOD.</strong></h1>
-					<a class="btn float-right mulai-belajar" href="#">Mulai Belajar</a>
+					<a class="btn float-right mulai-belajar" href="/pre-test.php">Mulai Belajar</a>
 				</div>
 			</div>
 		</section>

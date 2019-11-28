@@ -4,13 +4,24 @@ require_once('koneksi.php');
 include('assets/jawaban.php');
 if(isset($_POST['pre-test'])){
     $data = [$_POST['jawaban1'], $_POST['jawaban2'], $_POST['jawaban3'], $_POST['jawaban3']];
-    // $jawaban = array_push($jawaban, $data);
-    // var_dump($data);
-    // var_dump($jawabanSoal);
     $result = array_intersect($data, $jawabanSoal);
     $final_score = count($result) / count($jawabanSoal) * 100;
-    $_SESSION['final_score'] = $final_score;
-    header('Location: results-score-pretest.php');
+    
+    $query = "SELECT username FROM `test` WHERE username = '".$_SESSION['user']['username']."'";
+    $results = $koneksi->query($query);
+    if ($results->num_rows > 0) {
+        $sql = "update test set pre_test='$final_score' where username='".$_SESSION['user']['username']."'";
+    } else {
+        $sql = "insert into test(username, pre_test, pre_test_datetime) values ('".$_SESSION['user']['username']."', '$final_score', '".date('Y-m-d H:i:s')."')"; 
+    }
+    
+    if ($koneksi->query($sql) === TRUE) {
+        $_SESSION['pre-test'] = true;
+        header('Location: results-score-pretest.php');
+    } else {
+        echo "Error: " . $sql . "<br>" . $koneksi->error;
+    }
+    
 }
 
 ?>
@@ -51,7 +62,7 @@ if(isset($_POST['pre-test'])){
 			</div>
 		</div>
 		<center>
-			<strong style="text-transform: capitalize; padding-left: 3%;font-size: 35px; margin: 0; color:purple">Pre Test</strong>
+			<strong style="text-transform: capitalize; padding-left: 3%;font-size: 35px; margin: 0; color:purple">Selesaikan Pre Test Terlebih Dahulu Untuk Dapat Mengakses Konten Video</strong>
 		</center>
 	</div>
 
@@ -65,7 +76,7 @@ if(isset($_POST['pre-test'])){
 					<div class="jawaban" style="padding: 2%;">
 						<div class="ac">
 							<label class="radio-inline">
-								<input type="radio" name="jawaban1" value="gojek">A. [Gojek]
+								<input type="radio" name="jawaban1" value="gojek">A. Gojek
 							</label>
 							<label class="radio-inline">
 								<input type="radio" name="jawaban1" value="grab">C. Grab
@@ -88,7 +99,7 @@ if(isset($_POST['pre-test'])){
 					<div class="jawaban" style="padding: 2%;">
 						<div class="ac">
 							<label class="radio-inline">
-								<input type="radio" name="jawaban2" value="delivery makanan">A. [delivery makanan]
+								<input type="radio" name="jawaban2" value="delivery makanan">A. delivery makanan
 							</label>
 							<label class="radio-inline">
 								<input type="radio" name="jawaban2" value="antar barang">C. antar barang
@@ -122,7 +133,7 @@ if(isset($_POST['pre-test'])){
 								<input type="radio" name="jawaban3" value="makanan ringan">B. Makanan ringan
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="jawaban3" value="semua benar">D. [semua benar]
+								<input type="radio" name="jawaban3" value="semua benar">D. semua benar
 							</label>
 						</div>
 					</div>
@@ -134,7 +145,7 @@ if(isset($_POST['pre-test'])){
 					<div class="jawaban" style="padding: 2%;">
 						<div class="ac">
 							<label class="radio-inline">
-								<input type="radio" name="jawaban4" value="smartphones">A. [Smartphones]
+								<input type="radio" name="jawaban4" value="smartphones">A. Smartphones
 							</label>
 							<label class="radio-inline">
 								<input type="radio" name="jawaban4" value="laptop">C. Laptop

@@ -9,14 +9,14 @@ if(isset($_POST['pre-test'])){
 
 if(isset($_POST['pre-test-2'])){
 
-    $jawabanSoal = ['gojek', 'delivery makanan', 'semua benar', 'smartphones'];
+    $jawabanSoal = ['gojek'];
 
 }
 
 
 if(isset($_POST['post-test'])){
 
-    $jawabanSoal = ['gojek', 'delivery makanan', 'semua benar', 'smartphones'];
+    $jawabanSoal = ['GoFood', 'Mencari Restoran', 'Menambah Jumlah Makanan', 'Menambah Jumlah Makanan'];
 
 }
 

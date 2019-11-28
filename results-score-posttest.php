@@ -1,3 +1,23 @@
+<?php
+
+require_once('koneksi.php');
+if(isset($_SESSION['post-test'])){
+    $sql = "SELECT post_test, post_test_datetime FROM test WHERE username = '".$_SESSION['user']['username']."'";
+    $result = $koneksi->query($sql);
+    
+    if ($result->num_rows > 0) {
+        // output data of each row
+        $data = mysqli_fetch_assoc($result);
+    } else {
+        echo "0 results";
+    }
+}else{
+    header('Location : /post-test.php');    
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,36 +31,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div>
-		<nav class="navbar navbar-expand-lg navbar-light">
-			<div class="logo">
-				<a class="navbar-brand" href="index.html">
-		    		<img class="margin-logo" src="images/logo.png" alt="logo" width="200px">
-		  		</a>
-			</div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-	  		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-	  			<ul class="nav navbar-nav ml-auto">
-	  				<li class="nav-item">
-	  					<div class="dropdown">
-	  						<a href="#" class="btn btn-login dropdown-toggle" data-toggle="dropdown">Dzaki Madhani</a>
-	  						<div class="dropdown-menu">
-	  							<a class="dropdown-item" href="#">Logout</a>
-	  						</div>
-	  					</div>
-	  				</li>
-	  				<li class="nav-item">
-	  					<a href="#" class="btn  btn-login">Daftar</a>
-	  				</li>
-	  				<li class="nav-item">
-	  					<a href="#" class="btn btn-login">Masuk</a>
-	  				</li>
-	  			</ul>
-	  		</div>
-		</nav>
-	</div>
+    
+    <?php include('template/navbar.php') ?>
 	
 	<div class="status-bar" style="padding-left: 4%; padding-bottom: 15px; padding-top: 10px; padding-right: 4%">
 		<div class="row">
@@ -76,9 +68,9 @@
 					<h3 style="text-align: center;">Skor Post Test anda adalah</h3>
 				</div>
 				<div class="skor">
-					<h1 style="text-align: center; margin-top: 80px; margin-bottom: 30px; font-size: 100px; font-weight: bold;">100%</h1>
+					<h1 style="text-align: center; margin-top: 80px; margin-bottom: 30px; font-size: 100px; font-weight: bold;"><?= $data['post_test'] ;?>%</h1>
 					<center>
-						<a href="#" class="btn btn-primary">Home</a>
+						<a href="/index.php" class="btn btn-primary">Home</a>
 					</center>
 				</div>
 			</div>

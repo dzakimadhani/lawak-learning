@@ -2,7 +2,23 @@
 
 require_once('koneksi.php');
 
- ?><!DOCTYPE html>
+    if(isset($_SESSION['pre-test'])){
+        $sql = "SELECT pre_test, pre_test_datetime FROM test WHERE username = '".$_SESSION['user']['username']."'";
+        $result = $koneksi->query($sql);
+        
+        if ($result->num_rows > 0) {
+            // output data of each row
+            $data = mysqli_fetch_assoc($result);
+        } else {
+            echo "0 results";
+        }
+
+    }else{
+        header('Location : pre-test.php');
+    }
+
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>LAWAK LEARNING | NILAI PRE TEST</title>
@@ -52,9 +68,9 @@ require_once('koneksi.php');
 					<h3 style="text-align: center;">Skor Pre Test anda adalah</h3>
 				</div>
 				<div class="skor">
-					<h1 style="text-align: center; margin-top: 80px; margin-bottom: 30px; font-size: 100px; font-weight: bold;"><?= $_SESSION['final_score']; ?> %</h1>
+					<h1 style="text-align: center; margin-top: 80px; margin-bottom: 30px; font-size: 100px; font-weight: bold;"><?= $data['pre_test']; ?> %</h1>
 					<center>
-						<a href="pre-test-2.php" class="btn btn-primary">Continue To Pre-test 2</a>
+						<a href="video-konten.php" class="btn btn-primary">Continue To Post-Test</a>
 					</center>
 				</div>
 			</div>

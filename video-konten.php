@@ -11,36 +11,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div>
-		<nav class="navbar navbar-expand-lg navbar-light">
-			<div class="logo">
-				<a class="navbar-brand" href="index.html">
-		    		<img class="margin-logo" src="images/logo.png" alt="logo" width="200px">
-		  		</a>
-			</div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-	  		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-	  			<ul class="nav navbar-nav ml-auto">
-	  				<li class="nav-item">
-	  					<div class="dropdown">
-	  						<a href="#" class="btn btn-login dropdown-toggle" data-toggle="dropdown">Dzaki Madhani</a>
-	  						<div class="dropdown-menu">
-	  							<a class="dropdown-item" href="#">Logout</a>
-	  						</div>
-	  					</div>
-	  				</li>
-	  				<li class="nav-item">
-	  					<a href="#" class="btn  btn-login">Daftar</a>
-	  				</li>
-	  				<li class="nav-item">
-	  					<a href="#" class="btn btn-login">Masuk</a>
-	  				</li>
-	  			</ul>
-	  		</div>
-		</nav>
-	</div>
+	
+	<?php include('template/navbar.php') ?>
 
 	<div>
 		<section class="body-beranda">
@@ -62,7 +34,7 @@
               <iframe style="display:block; margin:0 auto;" width="896" height="504" src="https://www.youtube.com/embed/azn-w2lfpSU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="btn-next" style="text-align: right; padding-top: 60px;">
-              <a href="#" class="btn btn-primary" style="width: 200px;">Next</a>
+              <a href="/post-test.php" class="btn btn-primary" style="width: 200px;">Next</a>
             </div>
 		    	</div>
 		    </div>

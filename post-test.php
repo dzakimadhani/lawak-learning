@@ -2,15 +2,25 @@
 
 require_once('koneksi.php');
 include('assets/jawaban.php');
-if(isset($_POST['pre-test'])){
-    $data = [$_POST['jawaban1'], $_POST['jawaban2'], $_POST['jawaban3'], $_POST['jawaban3']];
-    // $jawaban = array_push($jawaban, $data);
-    // var_dump($data);
-    // var_dump($jawabanSoal);
+if(isset($_POST['post-test'])){
+    $data = [$_POST['jawaban1'], $_POST['jawaban2'], $_POST['jawaban3'], $_POST['jawaban4']];
     $result = array_intersect($data, $jawabanSoal);
     $final_score = count($result) / count($jawabanSoal) * 100;
-    $_SESSION['final_score'] = $final_score;
-    header('Location: results-score-pretest.php');
+    $query = "SELECT username FROM `test` WHERE username = '".$_SESSION['user']['username']."'";
+    $results = $koneksi->query($query);
+    if ($results->num_rows > 0) {
+        $sql = "update test set post_test='$final_score' where username='".$_SESSION['user']['username']."'";
+    } else {
+        $sql = "insert into test(username, post_test, post_test_datetime) values ('".$_SESSION['user']['username']."', '$final_score', '".date('Y-m-d H:i:s')."')"; 
+    }
+    
+    if ($koneksi->query($sql) === TRUE) {
+        $_SESSION['post-test'] = true;
+        header('Location: results-score-posttest.php');
+    } else {
+        echo "Error: " . $sql . "<br>" . $koneksi->error;
+    }
+    // var_dump($_SESSION['final_score_post']);
 }
 
 ?>
@@ -28,37 +38,9 @@ if(isset($_POST['pre-test'])){
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div>
-		<nav class="navbar navbar-expand-lg navbar-light">
-			<div class="logo">
-				<a class="navbar-brand" href="index.html">
-		    		<img class="margin-logo" src="images/logo.png" alt="logo" width="200px">
-		  		</a>
-			</div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-	  		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-	  			<ul class="nav navbar-nav ml-auto">
-	  				<li class="nav-item">
-	  					<div class="dropdown">
-	  						<a href="#" class="btn btn-login dropdown-toggle" data-toggle="dropdown">Dzaki Madhani</a>
-	  						<div class="dropdown-menu">
-	  							<a class="dropdown-item" href="#">Logout</a>
-	  						</div>
-	  					</div>
-	  				</li>
-	  				<li class="nav-item">
-	  					<a href="#" class="btn  btn-login">Daftar</a>
-	  				</li>
-	  				<li class="nav-item">
-	  					<a href="#" class="btn btn-login">Masuk</a>
-	  				</li>
-	  			</ul>
-	  		</div>
-		</nav>
-	</div>
-
+	
+	<?php include('template/navbar.php') ?>
+	
 	<div class="status-bar" style="padding-left: 4%; padding-bottom: 15px; padding-top: 10px; padding-right: 4%">
 		<div class="row">
 			<div class="col-sm-8">
@@ -85,7 +67,8 @@ if(isset($_POST['pre-test'])){
 
 	<div class="test">
 		<div class="container">
-			<form>
+			<form action="" method="post" enctype="multipart/form-data">
+	
 				<div class="pilgan">
 					<div class="soal">
 						<h5>1.	Mana dari gambar di bawah ini yang dilingkari merah merupakan fitur Go Food di aplikasi Go Jek?</h5>
@@ -93,18 +76,18 @@ if(isset($_POST['pre-test'])){
 					<div class="jawaban" style="padding: 2%;">
 						<div class="ac">
 							<label class="radio-inline">
-								<input type="radio" name="optradio">A. <img src="images/jawaban/01a.png" alt="" width="200px">
+								<input type="radio" name="jawaban1" value="GoFood">A. <img src="images/jawaban/01a.png" alt="" width="200px">
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="optradio">C. <img src="images/jawaban/01b.png" alt="" width="200px">
+								<input type="radio" name="jawaban1" value="GoCar" >C. <img src="images/jawaban/01b.png" alt="" width="200px">
 							</label>
 						</div>
 						<div class="bd">
 							<label class="radio-inline">
-								<input type="radio" name="optradio">B. <img src="images/jawaban/01c.png" alt="" width="200px">
+								<input type="radio" name="jawaban1" value="GoRide">B. <img src="images/jawaban/01c.png" alt="" width="200px">
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="optradio">D. <img src="images/jawaban/01d.png" alt="" width="200px">
+								<input type="radio" name="jawaban1" value="GoSend">D. <img src="images/jawaban/01d.png" alt="" width="200px">
 							</label>
 						</div>
 					</div>
@@ -121,18 +104,18 @@ if(isset($_POST['pre-test'])){
 					<div class="jawaban" style="padding: 2%;">
 						<div class="ac">
 							<label class="radio-inline">
-								<input type="radio" name="optradio">A. [Mencari restoran]
+								<input type="radio" name="jawaban2" value="Mencari Restoran">A. Mencari restoran
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="optradio">C. Mencari Driver
+								<input type="radio" name="jawaban2" value="Mencari Driver">C. Mencari Driver
 							</label>
 						</div>
 						<div class="bd">
 							<label class="radio-inline">
-								<input type="radio" name="optradio">B. Mencari Tiket
+								<input type="radio" name="jawaban2" value="Mencari Tiket">B. Mencari Tiket
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="optradio">D. Mencari Promo
+								<input type="radio" name="jawaban2" value="Mencari Promo">D. Mencari Promo
 							</label>
 						</div>
 					</div>
@@ -149,18 +132,18 @@ if(isset($_POST['pre-test'])){
 					<div class="jawaban" style="padding: 2%;">
 						<div class="ac">
 							<label class="radio-inline">
-								<input type="radio" name="optradio">A. Mencari Makanan
+								<input type="radio" name="jawaban3" value="Mencari Makan">A. Mencari Makanan
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="optradio">C. [Menambah Jumlah Makanan]
+								<input type="radio" name="jawaban3" value="Menambah Jumlah Makanan">C. Menambah Jumlah Makanan
 							</label>
 						</div>
 						<div class="bd">
 							<label class="radio-inline">
-								<input type="radio" name="optradio">B. Menambah Promo
+								<input type="radio" name="Jawaban3" value="Menambah Promo">B. Menambah Promo
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="optradio">D. Mencari Promo
+								<input type="radio" name="Jawaban3" value="Mencari Promo">D. Mencari Promo
 							</label>
 						</div>
 					</div>
@@ -172,24 +155,24 @@ if(isset($_POST['pre-test'])){
 					<div class="jawaban" style="padding: 2%;">
 						<div class="ac">
 							<label class="radio-inline">
-								<input type="radio" name="optradio">A. <img src="images/jawaban/04a.png" alt="" width="200px">
+								<input type="radio" name="Jawaban4" value="Menambah Jumlah Makanan">A. <img src="images/jawaban/04a.png" alt="" width="200px">
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="optradio">C. <img src="images/jawaban/04a.png" alt="" width="200px">
+								<input type="radio" name="Jawaban4" value="Mengurangi Jumlah Makanan">C. <img src="images/jawaban/04a.png" alt="" width="200px">
 							</label>
 						</div>
 						<div class="bd">
 							<label class="radio-inline">
-								<input type="radio" name="optradio">B. <img src="images/jawaban/04c.png" alt="" width="200px">
+								<input type="radio" name="Jawaban4" value="Jenis Pembayaran">B. <img src="images/jawaban/04c.png" alt="" width="200px">
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="optradio">D. <img src="images/jawaban/04d.png" alt="" width="200px">
+								<input type="radio" name="Jawaban4" value="Menambah Pesanan yang Berbeda">D. <img src="images/jawaban/04d.png" alt="" width="200px">
 							</label>
 						</div>
 					</div>
 				</div>
 				<div class="submit-pilgan">
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="submit" name = "post-test" class="btn btn-primary">Submit</button>
 				</div>
 			</form>
 		</div>

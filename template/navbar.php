@@ -1,7 +1,7 @@
 <div>
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="logo">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="/index.php">
           <img class="margin-logo" src="images/logo.png" alt="logo" width="200px">
         </a>
     </div>
