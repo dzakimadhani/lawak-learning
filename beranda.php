@@ -1,3 +1,20 @@
+<?php 
+    require_once('koneksi.php');
+    
+    require_once('login_check.php');
+    
+    $sql = "SELECT * FROM test WHERE username = '".$_SESSION['user']['username']."'";
+    $result = $koneksi->query($sql);
+    
+    if ($result->num_rows > 0) {
+        // output data of each row
+        $data = mysqli_fetch_assoc($result);
+    } else {
+        echo "0 results";
+    }
+
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,37 +28,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div>
-		<nav class="navbar navbar-expand-lg navbar-light">
-			<div class="logo">
-				<a class="navbar-brand" href="index.html">
-		    		<img class="margin-logo" src="images/logo.png" alt="logo" width="200px">
-		  		</a>
-			</div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-	  		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-	  			<ul class="nav navbar-nav ml-auto">
-	  				<li class="nav-item">
-	  					<div class="dropdown">
-	  						<a href="#" class="btn btn-login dropdown-toggle" data-toggle="dropdown">Dzaki Madhani</a>
-	  						<div class="dropdown-menu">
-	  							<a class="dropdown-item" href="#">Logout</a>
-	  						</div>
-	  					</div>
-	  				</li>
-	  				<li class="nav-item">
-	  					<a href="#" class="btn  btn-login">Daftar</a>
-	  				</li>
-	  				<li class="nav-item">
-	  					<a href="#" class="btn btn-login">Masuk</a>
-	  				</li>
-	  			</ul>
-	  		</div>
-		</nav>
-	</div>
-	
+	<?php include('template/navbar.php') ?>
 	<div>
 		<section class="body-beranda">
 		    <div class="container">
@@ -77,9 +64,9 @@
 								</table>
 							</div>
 							<div class="progress">
-								<div class="progress-bar" role="progressbar" style="width: 50%;"></div>
+								<div class="progress-bar" role="progressbar" style="width: <?= $data['pre_test'] ?>%;"></div>
 							</div>
-							<figcaption>anda telah menyelesaikan <strong>50%</strong></figcaption>
+							<figcaption>anda telah menyelesaikan <strong><?= $data['pre_test'] ?>%</strong></figcaption>
 							<a class="btn btn-buka" href="matkul-pbd.html">Buka</a>
 						</div>
 					</div>
@@ -96,10 +83,10 @@
 								</table>
 							</div>
 							<div class="progress">
-								<div class="progress-bar" role="progressbar" style="width: 100%"></div>
+								<div class="progress-bar" role="progressbar" style="width: <?= $data['post_test'] ?>%"></div>
 							</div>
-							<figcaption>anda telah menyelesaikan <strong>100%</strong></figcaption>
-							<a class="btn btn-buka" href="matkul-pbd.html">Buka</a>
+							<figcaption>anda telah menyelesaikan <strong><?= $data['post_test'] ?>%</strong></figcaption>
+							<a class="btn btn-buka" href="/post-test.php">Buka</a>
 						</div>
 					</div>
 				</div>

@@ -18,7 +18,7 @@ if(isset($_POST['login'])){
            session_start();
            $_SESSION["user"] = $data;
            // login sukses, alihkan ke halaman timeline
-           header("Location: index.php");
+           header("Location: pre-test.php");
        }
     }
 }
@@ -64,7 +64,7 @@ if(isset($_POST['login'])){
 		                    </div>
 		                    <div class="row">
 		                    	<div class="col-6">
-		                    		<a class="kembali-login" href="#"><button class="btn btn-lg btn-block" type="button">Kembali</button></a>
+		                    		<a class="kembali-login" href="/index.php"><button class="btn btn-lg btn-block" type="button">Kembali</button></a>
 		                    	</div>
 		                    	<div class="col-6">
 		                    		<a class="masuk-login" href="#"><button class="btn btn-lg btn-block" name="login" type="submit">Masuk</button></a>

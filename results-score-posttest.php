@@ -1,6 +1,7 @@
 <?php
 
 require_once('koneksi.php');
+include('login_check.php');
 if(isset($_SESSION['post-test'])){
     $sql = "SELECT post_test, post_test_datetime FROM test WHERE username = '".$_SESSION['user']['username']."'";
     $result = $koneksi->query($sql);
@@ -42,10 +43,10 @@ if(isset($_SESSION['post-test'])){
 						<td style="vertical-align:bottom">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item" aria-current="page" style="text-transform: capitalize; margin-top: 20px;">
-									<a style="color:grey; " href="">Home</a>
+									<a style="color:grey; " href="/beranda.php">Home</a>
 								</li>
 								<li class="breadcrumb-item" aria-current="page" style="text-transform: capitalize; margin-top: 20px;">
-									<a style="color:grey; " href="#">Post Test</a>
+									<a style="color:grey; " href="/post-test.php">Post Test</a>
 								</li>
 								<li class="breadcrumb-item" aria-current="page" style="text-transform: capitalize; margin-top: 20px;">
 									<a style="color:grey; " href="#">nilai</a>
@@ -70,7 +71,7 @@ if(isset($_SESSION['post-test'])){
 				<div class="skor">
 					<h1 style="text-align: center; margin-top: 80px; margin-bottom: 30px; font-size: 100px; font-weight: bold;"><?= $data['post_test'] ;?>%</h1>
 					<center>
-						<a href="/index.php" class="btn btn-primary">Home</a>
+						<a href="/beranda.php" class="btn btn-primary">Home</a>
 					</center>
 				</div>
 			</div>

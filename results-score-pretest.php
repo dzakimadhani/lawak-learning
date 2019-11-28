@@ -1,7 +1,7 @@
 <?php
 
 require_once('koneksi.php');
-
+include('login_check.php');
     if(isset($_SESSION['pre-test'])){
         $sql = "SELECT pre_test, pre_test_datetime FROM test WHERE username = '".$_SESSION['user']['username']."'";
         $result = $koneksi->query($sql);
@@ -42,10 +42,10 @@ require_once('koneksi.php');
 						<td style="vertical-align:bottom">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item" aria-current="page" style="text-transform: capitalize; margin-top: 20px;">
-									<a style="color:grey; " href="">Home</a>
+									<a style="color:grey; " href="/beranda.php">Home</a>
 								</li>
 								<li class="breadcrumb-item" aria-current="page" style="text-transform: capitalize; margin-top: 20px;">
-									<a style="color:grey; " href="#">Pre Test</a>
+									<a style="color:grey; " href="/pre-test.php">Pre Test</a>
 								</li>
 								<li class="breadcrumb-item" aria-current="page" style="text-transform: capitalize; margin-top: 20px;">
 									<a style="color:grey; " href="#">nilai</a>

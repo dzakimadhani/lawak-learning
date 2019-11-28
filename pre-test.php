@@ -2,6 +2,7 @@
 
 require_once('koneksi.php');
 include('assets/jawaban.php');
+include('login_check.php');
 if(isset($_POST['pre-test'])){
     $data = [$_POST['jawaban1'], $_POST['jawaban2'], $_POST['jawaban3'], $_POST['jawaban3']];
     $result = array_intersect($data, $jawabanSoal);
@@ -50,7 +51,7 @@ if(isset($_POST['pre-test'])){
 						<td style="vertical-align:bottom">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item" aria-current="page" style="text-transform: capitalize; margin-top: 20px;">
-									<a style="color:grey; " href="">Home</a>
+									<a style="color:grey; " href="/beranda.php">Home</a>
 								</li>
 								<li class="breadcrumb-item" aria-current="page" style="text-transform: capitalize; margin-top: 20px;">
 									<a style="color:grey; " href="#">Pre Test</a>

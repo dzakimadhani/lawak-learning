@@ -2,6 +2,7 @@
 
 require_once('koneksi.php');
 include('assets/jawaban.php');
+include('login_check.php');
 if(isset($_POST['post-test'])){
     $data = [$_POST['jawaban1'], $_POST['jawaban2'], $_POST['jawaban3'], $_POST['jawaban4']];
     $result = array_intersect($data, $jawabanSoal);

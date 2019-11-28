@@ -16,6 +16,7 @@
               <div class="dropdown">
                 <a href="#" class="btn btn-login dropdown-toggle" data-toggle="dropdown"><?= $_SESSION['user']['username'] ?></a>
                 <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/beranda.php">Beranda</a>
                   <a class="dropdown-item" href="/logout.php">Logout</a>
                 </div>
               </div>
